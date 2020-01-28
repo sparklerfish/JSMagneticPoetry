@@ -733,26 +733,24 @@ module.exports = Cancel;
 
 const axios = __webpack_require__(8);
 
-
 const COMMON_WORDS = "it and of me very I that in quite ed you but to ing way he or for the er they as with more be we if on most have she when at from the be to of and a in that have it for not who is on with he as you do".split(" ")
 
+window.onload = () => {
 
-window.onload = function() {
-    let words = getWords("cat").then(data => {
-        let wordsArr = []
+    let wordsArr = []
+
+    getWords("dog").then(data => {
+        console.log(data)
         data.forEach((object) => {
             wordsArr.push(object.word);
         });
-        // console.log(wordsArr);
-        return wordsArr
+
+        const allWords = wordsArr.concat(COMMON_WORDS);
+        allWords.sort(() => Math.random() - 0.5);
+        allWords.forEach((word, idx) => {
+            addWord(word, idx);
+        });
     })
-    // console.log(wordsArr.length);
-    // console.log(wordsArr);
-    console.log(words);
-    
-    COMMON_WORDS.forEach((word, idx) => {
-        addWord(word, idx);
-    });
 
     document.addEventListener("mouseover", e => dragWord(e.target.id));
 
