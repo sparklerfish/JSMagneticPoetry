@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const COMMON_WORDS = "it and of me very I that in quite ed you but to ing way he or for the er they as with more be we if on most have she when at from the be to of and a in that have it for not who is on with he as you do".split(" ")
+const COMMON_WORDS = "it an and the I and of me very I that in quite ed you but to ing way he or for the er they as with more be we if on most have she when at from the be to of and a in that have it for not who is on with he as you do".split(" ")
 
 window.onload = () => {
     
