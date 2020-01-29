@@ -8,29 +8,22 @@
     box-shadow: 1px 1px grey;
     user-select: none;
     box-sizing: border-box;
+    font-variant-ligatures: no-common-ligatures;
 }
 
 #words {
-    height: 600px;
+    height: 1200px;
     padding: 5px;
-    width: 500px;
-}
-
-#fridge {
-    /* float: left; */
-    height: 700px;
-    /* width: 90%; */
-    /* border: 1px solid black; */
-    background-color: #EEEEEE;
-    border-radius: 6px;
-    padding: 10px;
-    margin: auto;
+    width: 400px;
+    margin-left: 20px;
+    margin-top: 300px;
+    /* position: fixed; */
 }
 
 #rightBox {
     float: left;
-    height: 700px;
-    width: 400px;
+    /* height: 700px; */
+    width: 600px;
     /* border: 1px solid black; */
     /* background-image: url('fridge.png');
     object-fit: cover; */
@@ -38,6 +31,7 @@
     border-radius: 6px;
     padding: 10px;
     margin: 10px;
+
 }
 
 #main {
@@ -48,15 +42,15 @@
 }
 
 #search-form {
-    padding-bottom: 20px;
-    padding-top: 20px;
+    /* padding-bottom: 20px;
+    padding-top: 20px; */
     margin: auto;
 }
 
 #search-word {
     padding: 5px;
     width: 180px;
-    margin: 5px;
+    margin: auto;
     border-radius: 5px;
     border: 0 none;
     height: 15px;
@@ -69,5 +63,16 @@ input[type=submit] {
     cursor: pointer;
     border-radius: 5px; 
     width: 180px;
-    margin: 5px;
+    margin: auto;
+}
+
+#controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #EEEEEE;
+    padding: 10px;
+    border-radius: 5px;
+    width: 300px;
+    margin: auto;
 }

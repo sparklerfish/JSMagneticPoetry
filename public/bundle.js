@@ -785,6 +785,7 @@ window.onload = () => {
                     }
             console.log(searchArr.length)
             let allWords = searchArr.concat(COMMON_WORDS);
+            allWords.push(searchWord);
             allWords.sort(() => Math.random() - 0.5);
             allWords = allWords.filter((a, b) => allWords.indexOf(a) === b);
             console.log(allWords);
@@ -820,19 +821,19 @@ window.onload = () => {
 
         word.onmousedown = event => {
             zCounter += 1;
-            let shiftX = event.clientX - word.getBoundingClientRect().left;
-            let shiftY = event.clientY - word.getBoundingClientRect().top;
+            // let shiftX = event.clientX - word.getBoundingClientRect().left;
+            // let shiftY = event.clientY - word.getBoundingClientRect().top;
             word.style.position = "absolute";
-            // word.style.zIndex = 1000;
             word.style.zIndex = zCounter;
             word.style.cursor = "grabbing";
+            word.style.filter = "drop-shadow(3px 3px 3px grey)";
 
             // document.body.append(word);
 
             
             const moveAt = (pageX, pageY) => {
-                word.style.left = pageX - shiftX - 3 + "px";
-                word.style.top = pageY - shiftY - 3 + "px";
+                word.style.left = pageX - (word.offsetWidth / 2) - 3 + "px";
+                word.style.top = pageY - (word.offsetHeight / 2) - 3 + "px";
             };
             
             const onMouseMove = (event) => {
@@ -846,6 +847,7 @@ window.onload = () => {
                 document.removeEventListener("mousemove", onMouseMove);
                 word.onmouseup = null;
                 word.style.cursor = "grab";
+                word.style.filter = "";
             };
         };
         word.ondragstart = () => {
