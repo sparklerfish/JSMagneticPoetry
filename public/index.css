@@ -5,8 +5,64 @@
     margin: 2px;
     cursor: pointer;
     background-color: white;
+    box-shadow: 1px 1px grey;
 }
 
 #words {
-    width: 600px;
+    height: 600px;
+    padding: 5px;
+}
+
+#leftBox {
+    float: left;
+    height: 700px;
+    width: 400px;
+    /* border: 1px solid black; */
+    background-color: #EEEEEE;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 10px;
+}
+
+#rightBox {
+    float: left;
+    height: 700px;
+    width: 400px;
+    /* border: 1px solid black; */
+    background-color: #EEEEEE;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 10px;
+}
+
+#main {
+    /* padding: 20px; */
+    display: table;
+    clear: both;
+    /* margin: auto; */
+}
+
+#search-form {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin: auto;
+}
+
+#search-word {
+    padding: 5px;
+    width: 180px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 0 none;
+    height: 15px;
+}
+
+input[type=submit] {
+    padding:5px 15px; 
+    background:#ccc; 
+    border: 0 none;
+    cursor: pointer;
+    border-radius: 5px; 
+    width: 180px;
+    margin: 5px;
 }

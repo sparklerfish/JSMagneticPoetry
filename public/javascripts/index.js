@@ -3,23 +3,54 @@ const axios = require('axios');
 const COMMON_WORDS = "it and of me very I that in quite ed you but to ing way he or for the er they as with more be we if on most have she when at from the be to of and a in that have it for not who is on with he as you do".split(" ")
 
 window.onload = () => {
-
-    let wordsArr = []
-
-    getWords("dog").then(data => {
-        console.log(data)
+    
+    getWords("word").then(data => {
+        let wordsArr = [];
         data.forEach((object) => {
             wordsArr.push(object.word);
         });
-
+        
         const allWords = wordsArr.concat(COMMON_WORDS);
         allWords.sort(() => Math.random() - 0.5);
         allWords.forEach((word, idx) => {
             addWord(word, idx);
         });
     })
+    
+    const searchForm = document.getElementById("search-form");
+    
+    searchForm.addEventListener(
+        "submit",
+        function(e) {
+            e.preventDefault();
+            // debugger;
+            const searchWord = document.getElementById("search-word").value
+            const wordsDiv = document.getElementById("words");
+            while (wordsDiv.firstChild) {
+              wordsDiv.removeChild(wordsDiv.firstChild);
+            }
+            let searchArr = [];
+                console.log(searchWord)
+                getWords(searchWord).then(data => {
+                    data.forEach(object => {
+                    searchArr.push(object.word);
+                    });
 
-    document.addEventListener("mouseover", e => dragWord(e.target.id));
+            const allWords = searchArr.concat(COMMON_WORDS);
+            allWords.sort(() => Math.random() - 0.5);
+            allWords.forEach((word, idx) => {
+            addWord(word, idx);
+            });
+        });
+      },
+      false
+    );
+
+    document.addEventListener("mouseover", e => {
+        if (e.target.className === "word") {
+            dragWord(e.target.id)
+        }
+    })
 
     const dragWord = wordId => {
         if (!wordId) return;
@@ -33,19 +64,19 @@ window.onload = () => {
             moveAt(event.pageX, event.pageY);
 
             function moveAt(pageX, pageY) {
-            word.style.left = pageX - word.offsetWidth / 2 + "px";
-            word.style.top = pageY - word.offsetHeight / 2 + "px";
+                word.style.left = pageX - word.offsetWidth / 2 + "px";
+                word.style.top = pageY - word.offsetHeight / 2 + "px";
             }
 
             function onMouseMove(event) {
-            moveAt(event.pageX, event.pageY);
+                moveAt(event.pageX, event.pageY);
             }
 
             document.addEventListener("mousemove", onMouseMove);
 
             word.onmouseup = function() {
-            document.removeEventListener("mousemove", onMouseMove);
-            word.onmouseup = null;
+                document.removeEventListener("mousemove", onMouseMove);
+                word.onmouseup = null;
             };
         };
         word.ondragstart = function() {
@@ -59,13 +90,6 @@ const getWords = searchWord => {
       .get(`/words?rel_trg=${searchWord}`)
       .then(response => {
         return response.data
-        // // console.log(response.data);
-        // let wordsArr = []
-        // response.data.forEach((object) => {
-        //     wordsArr.push(object.word);
-        // });
-        // console.log(wordsArr);
-        // return wordsArr
     })
       .catch(function(error) {
         console.log(error);
