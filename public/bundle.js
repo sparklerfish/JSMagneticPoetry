@@ -739,22 +739,34 @@ window.onload = () => {
     
     getWords("word").then(data => {
         let wordsArr = [];
-        data.forEach((object) => {
-            wordsArr.push(object.word);
-        });
+        while (wordsArr.length <= 40) {
+            data.forEach((object) => {
+                wordsArr.push(object.word);
+            });
+        }
         
         const allWords = wordsArr.concat(COMMON_WORDS);
         allWords.sort(() => Math.random() - 0.5);
         allWords.forEach((word, idx) => {
             addWord(word, idx);
         });
+        for (let i = allWords.length - 1; i >= 0; i--) {
+            const wordRect = document.getElementById(`word-${i}`)
+            const rect = wordRect.getBoundingClientRect();
+            // debugger;
+            const degrees = -3 + Math.random() * 6;
+
+            console.log(rect.top, rect.right, rect.bottom, rect.left);
+            wordRect.style.position = "absolute";
+            wordRect.style.left = rect.left + "px";
+            wordRect.style.top = rect.top + "px";
+            wordRect.style.transform = `rotate(${degrees}deg)`;
+        }
     })
     
     const searchForm = document.getElementById("search-form");
     
-    searchForm.addEventListener(
-        "submit",
-        function(e) {
+    searchForm.addEventListener("submit", (e) => {
             e.preventDefault();
             // debugger;
             const searchWord = document.getElementById("search-word").value
@@ -763,17 +775,31 @@ window.onload = () => {
               wordsDiv.removeChild(wordsDiv.firstChild);
             }
             let searchArr = [];
-                console.log(searchWord)
+                // console.log(searchWord)
                 getWords(searchWord).then(data => {
-                    data.forEach(object => {
-                    searchArr.push(object.word);
-                    });
-
+                    while (searchArr.length <= 40) {
+                        data.forEach(object => {
+                            searchArr.push(object.word);
+                        });
+                    }
+            console.log(searchArr.length)
             const allWords = searchArr.concat(COMMON_WORDS);
             allWords.sort(() => Math.random() - 0.5);
             allWords.forEach((word, idx) => {
-            addWord(word, idx);
+                addWord(word, idx);
             });
+            for (let i = allWords.length - 1; i >= 0; i--) {
+                const wordRect = document.getElementById(`word-${i}`)
+                const rect = wordRect.getBoundingClientRect();
+                // debugger;
+                const degrees = -3 + Math.random() * 6;
+
+                console.log(rect.top, rect.right, rect.bottom, rect.left);
+                wordRect.style.position = "absolute";
+                wordRect.style.left = rect.left + "px";
+                wordRect.style.top = rect.top + "px";
+                wordRect.style.transform = `rotate(${degrees}deg)`;
+            }
         });
       },
       false
@@ -784,35 +810,42 @@ window.onload = () => {
             dragWord(e.target.id)
         }
     })
-
+    let zCounter = 0;
     const dragWord = wordId => {
         if (!wordId) return;
         const word = document.getElementById(wordId);
 
         word.onmousedown = event => {
+            zCounter += 1;
+            let shiftX = event.clientX - word.getBoundingClientRect().left;
+            let shiftY = event.clientY - word.getBoundingClientRect().top;
             word.style.position = "absolute";
-            word.style.zIndex = 1000;
+            // word.style.zIndex = 1000;
+            word.style.zIndex = zCounter;
+            word.style.cursor = "grabbing";
+
             // document.body.append(word);
 
-            moveAt(event.pageX, event.pageY);
-
-            function moveAt(pageX, pageY) {
-                word.style.left = pageX - word.offsetWidth / 2 + "px";
-                word.style.top = pageY - word.offsetHeight / 2 + "px";
-            }
-
-            function onMouseMove(event) {
+            
+            const moveAt = (pageX, pageY) => {
+                word.style.left = pageX - shiftX - 3 + "px";
+                word.style.top = pageY - shiftY - 3 + "px";
+            };
+            
+            const onMouseMove = (event) => {
                 moveAt(event.pageX, event.pageY);
-            }
-
+            };
+            
+            moveAt(event.pageX, event.pageY);
             document.addEventListener("mousemove", onMouseMove);
 
-            word.onmouseup = function() {
+            word.onmouseup = () => {
                 document.removeEventListener("mousemove", onMouseMove);
                 word.onmouseup = null;
+                word.style.cursor = "grab";
             };
         };
-        word.ondragstart = function() {
+        word.ondragstart = () => {
             return false;
         };
     };
@@ -830,11 +863,15 @@ const getWords = searchWord => {
 }
 
 const addWord = (word, idx) => {
-  const wordSpan = document.createElement("span");
-  wordSpan.innerHTML = word;
-  wordSpan.className = "word"; 
-  wordSpan.id = `word-${idx}`
-  document.getElementById("words").appendChild(wordSpan);
+    const wordSpan = document.createElement("span");
+    wordSpan.innerHTML = word;
+    wordSpan.className = "word"; 
+    wordSpan.id = `word-${idx}`;
+    wordSpan.style.zIndex = 0;
+    // wordSpan.style.position = "relative";
+    // wordSpan.style.transform = `rotate(5deg)`;
+    // wordSpan.style.color = `blue`;
+    document.getElementById("words").appendChild(wordSpan);
 };
 
 /***/ }),
