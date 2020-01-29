@@ -13,7 +13,9 @@ app.get('/', (request, res) => {
 // create a search route
 app.get('/words', (request, response) => {
   console.log(request)
-  fetch(`https://api.datamuse.com/words?rel_trg=${request.query.rel_trg}`)
+  fetch(
+    `https://api.datamuse.com/words?rel_trg=${request.query.rel_trg}&max=40`
+  )
     .then(response => {
       return response.text();
     })

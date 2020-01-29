@@ -12,8 +12,9 @@ window.onload = () => {
             });
         }
         
-        const allWords = wordsArr.concat(COMMON_WORDS);
+        let allWords = wordsArr.concat(COMMON_WORDS);
         allWords.sort(() => Math.random() - 0.5);
+        allWords = allWords.filter((a, b) => allWords.indexOf(a) === b);
         allWords.forEach((word, idx) => {
             addWord(word, idx);
         });
@@ -23,7 +24,7 @@ window.onload = () => {
             // debugger;
             const degrees = -3 + Math.random() * 6;
 
-            console.log(rect.top, rect.right, rect.bottom, rect.left);
+            // console.log(rect.top, rect.right, rect.bottom, rect.left);
             wordRect.style.position = "absolute";
             wordRect.style.left = rect.left + "px";
             wordRect.style.top = rect.top + "px";
@@ -50,8 +51,10 @@ window.onload = () => {
                         });
                     }
             console.log(searchArr.length)
-            const allWords = searchArr.concat(COMMON_WORDS);
+            let allWords = searchArr.concat(COMMON_WORDS);
             allWords.sort(() => Math.random() - 0.5);
+            allWords = allWords.filter((a, b) => allWords.indexOf(a) === b);
+            console.log(allWords);
             allWords.forEach((word, idx) => {
                 addWord(word, idx);
             });
@@ -61,7 +64,7 @@ window.onload = () => {
                 // debugger;
                 const degrees = -3 + Math.random() * 6;
 
-                console.log(rect.top, rect.right, rect.bottom, rect.left);
+                // console.log(rect.top, rect.right, rect.bottom, rect.left);
                 wordRect.style.position = "absolute";
                 wordRect.style.left = rect.left + "px";
                 wordRect.style.top = rect.top + "px";
