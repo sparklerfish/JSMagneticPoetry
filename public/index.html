@@ -16,10 +16,19 @@
       <div id="controls">
         <h2>JavaScript Magnetic Poetry</h2>
           <form id="search-form">
-            Enter a word in the box below to generate a new set of word magnets related to it. <br />
-            Words are sourced from <a href="https://www.datamuse.com/api/">Datamuse API</a> <br /><br />
-            <input type="text" placeholder="word" id="search-word" autocomplete="off">
-            <input type="submit" value="Generate Words" id="search-button">
+            <p>
+              Enter a word in the box below to generate a new set of magnets related to the word.
+            </p>
+            <p>
+              Words are sourced from <a href="https://www.datamuse.com/api/">Datamuse API</a>
+            </p>
+            <input type="text" placeholder="word theme" id="search-word" autocomplete="off">
+            <input type="submit" value="Generate Words" id="search-button"> <br/>
+          </form>
+
+          <form id="custom-form">
+            <input type="text" placeholder="add word" id="custom-word" autocomplete="off">
+            <input type="submit" value="Add Custom Word" id="custom-button">
           </form>
       </div>
     </body>

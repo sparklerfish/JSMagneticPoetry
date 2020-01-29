@@ -4,7 +4,7 @@ const COMMON_WORDS = "it an and the I and of me very I that in quite ed you but 
 
 window.onload = () => {
     
-    getWords("word").then(data => {
+    getWords("javascript").then(data => {
         let wordsArr = [];
         while (wordsArr.length <= 40) {
             data.forEach((object) => {
@@ -50,12 +50,12 @@ window.onload = () => {
                             searchArr.push(object.word);
                         });
                     }
-            console.log(searchArr.length)
+            // console.log(searchArr.length)
             let allWords = searchArr.concat(COMMON_WORDS);
             allWords.push(searchWord);
             allWords.sort(() => Math.random() - 0.5);
             allWords = allWords.filter((a, b) => allWords.indexOf(a) === b);
-            console.log(allWords);
+            // console.log(allWords);
             allWords.forEach((word, idx) => {
                 addWord(word, idx);
             });
@@ -74,6 +74,34 @@ window.onload = () => {
         });
       },
       false
+    );
+
+    const customForm = document.getElementById("custom-form");
+    
+    customForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const customWord = document.getElementById("custom-word").value;
+            const wordsDiv = document.getElementById("words");
+            const lastSpanId = wordsDiv.lastElementChild.id;
+            const newWordIdx = parseInt(lastSpanId.split("-")[1]) + 2
+            addWord(customWord, newWordIdx)
+            console.log(customWord);
+            console.log(newWordIdx);
+            console.log("hello");
+            document.getElementById("custom-word").value = "";
+            const wordRect = document.getElementById(`word-${newWordIdx}`);
+            const rect = wordRect.getBoundingClientRect();
+            const degrees = -3 + Math.random() * 6;
+            // const rect = wordRect.getBoundingClientRect();
+            wordRect.style.position = "absolute";
+            wordRect.style.left = "160px";
+            wordRect.style.top = "220px";
+            wordRect.style.zIndex = 2;
+            wordRect.style.transform = `rotate(${degrees}deg)`;
+
+
+        },
+        false
     );
 
     document.addEventListener("mouseover", e => {
