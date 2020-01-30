@@ -20,7 +20,7 @@ html, body{
     /* height: 1200px; */
     padding: 5px;
     width: 400px;
-    margin-left: 15px;
+    /* margin-left: 5px; */
     margin-top: 260px;
     /* position: fixed; */
 }
@@ -41,8 +41,9 @@ html, body{
 
 #main {
     /* padding: 20px; */
-    /* display: table;
-    clear: both; */
+    display: table;
+    clear: both;
+    /* top: 0px; */
     margin-left: 1vw;
     margin-right: 1vw;
     margin-top: 1vh;
@@ -51,8 +52,9 @@ html, body{
     height: 98vh;
     border-radius: 5px;
     background-color: #c7c7c7;
-    position: fixed;
-    box-sizing: border-box;
+    /* position: absolute; */
+    z-index: -1;
+    /* box-sizing: border-box; */
 }
 
 #search-form {
@@ -102,7 +104,7 @@ input[type=submit] {
 #controls {
     position: absolute;
     top: 20px;
-    left: 20px;
+    left: 25px;
     background-color: #EEEEEE;
     padding: 10px;
     border-radius: 5px;
@@ -113,6 +115,7 @@ input[type=submit] {
 h2 {
     margin-top: 5px;
     margin-left: 5px;
+    font-size: 20pt;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 

@@ -132,8 +132,8 @@ window.onload = () => {
 
             
             const moveAt = (pageX, pageY) => {
-                word.style.left = pageX - (word.offsetWidth / 2) - 3 + "px";
-                word.style.top = pageY - (word.offsetHeight / 2) - 3 + "px";
+                word.style.left = pageX - (word.offsetWidth / 2) + "px";
+                word.style.top = pageY - (word.offsetHeight / 2) + "px";
             };
             
             const onMouseMove = (event) => {
