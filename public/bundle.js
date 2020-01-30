@@ -733,7 +733,7 @@ module.exports = Cancel;
 
 const axios = __webpack_require__(8);
 
-const COMMON_WORDS = "it an and the I and of me very I that in quite ed you but to ing way he or for the er they as with more be we if on most have she when at from the be to of and a in that have it for not who is on with he as you do".split(" ")
+const COMMON_WORDS = "it an and am the I and of me very I that in ed you but to ing way he or for the er they as with more be we if on most have she when at from the be to of and a in that have it for not who is on with he as you do".split(" ")
 
 window.onload = () => {
     
@@ -757,13 +757,12 @@ window.onload = () => {
             // debugger;
             const degrees = -3 + Math.random() * 6;
 
-            // console.log(rect.top, rect.right, rect.bottom, rect.left);
             wordRect.style.position = "absolute";
             wordRect.style.left = rect.left + "px";
             wordRect.style.top = rect.top + "px";
             wordRect.style.transform = `rotate(${degrees}deg)`;
         }
-    })
+    });
     
     const searchForm = document.getElementById("search-form");
     
@@ -825,17 +824,16 @@ window.onload = () => {
             const lastSpanId = wordsDiv.lastElementChild.id;
             const newWordIdx = parseInt(lastSpanId.split("-")[1]) + 2
             addWord(customWord, newWordIdx)
-            console.log(customWord);
-            console.log(newWordIdx);
-            console.log("hello");
+            // console.log(customWord);
+            // console.log(newWordIdx);
+            // console.log("hello");
             document.getElementById("custom-word").value = "";
             const wordRect = document.getElementById(`word-${newWordIdx}`);
-            // const rect = wordRect.getBoundingClientRect();
             const degrees = -3 + Math.random() * 6;
             // const rect = wordRect.getBoundingClientRect();
             wordRect.style.position = "absolute";
             wordRect.style.left = "35px";
-            wordRect.style.top = "205px";
+            wordRect.style.top = "210px";
             wordRect.style.zIndex = 2;
             wordRect.style.transform = `rotate(${degrees}deg)`;
         },

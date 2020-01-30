@@ -3,6 +3,10 @@ html, body{
    margin: 0;
 }
 
+html {
+    background-color: #2BB7C9;
+}
+
 .word {
     float: left;
     border: 1px solid black;
@@ -32,7 +36,7 @@ html, body{
     /* border: 1px solid black; */
     /* background-image: url('fridge.png');
     object-fit: cover; */
-    background-color: #EEEEEE;
+    /* background-color: #EEEEEE; */
     border-radius: 6px;
     padding: 10px;
     margin: 10px;
@@ -51,10 +55,10 @@ html, body{
     width: 98vw;
     height: 98vh;
     border-radius: 5px;
-    background-color: #c7c7c7;
     /* position: absolute; */
     z-index: -1;
     /* box-sizing: border-box; */
+    background-color: #fffee8;
 }
 
 #search-form {
@@ -90,22 +94,25 @@ form {
 }
 
 input[type=submit] {
-    padding:5px 15px; 
-    background:#ccc; 
-    /* border: 0 none; */
+    padding: 6px 15px; 
+    background:#2BB7C9; 
+    outline:#2BB7C9; 
+    border: 0 none;
     cursor: pointer;
     border-radius: 5px; 
     width: 180px;
     margin: auto;
-    outline: none;
-
+    /* outline: none; */
+    color: white;
+    font-size: 10pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #controls {
     position: absolute;
     top: 20px;
     left: 25px;
-    background-color: #EEEEEE;
+    background-color: #FE4A48;
     padding: 10px;
     border-radius: 5px;
     width: 390px;
@@ -117,17 +124,19 @@ h2 {
     margin-left: 5px;
     font-size: 20pt;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: yellow;
 }
 
 p {
     margin-left: 5px;
     font-weight: 200;
+    color: white;
 }
 
 p a {
     text-decoration: none;
     font-weight: 500;
-    color: black;
+    color: yellow;
 }
 
 p a:hover {
