@@ -91,9 +91,6 @@ window.onload = () => {
             const lastSpanId = wordsDiv.lastElementChild.id;
             const newWordIdx = parseInt(lastSpanId.split("-")[1]) + 2
             addWord(customWord, newWordIdx)
-            // console.log(customWord);
-            // console.log(newWordIdx);
-            // console.log("hello");
             document.getElementById("custom-word").value = "";
             const wordRect = document.getElementById(`word-${newWordIdx}`);
             const degrees = -3 + Math.random() * 6;
@@ -134,8 +131,16 @@ window.onload = () => {
                 word.style.top = pageY - (word.offsetHeight / 2) + "px";
             };
             
+            let currentDroppable = null;
+
+            
             const onMouseMove = (event) => {
                 moveAt(event.pageX, event.pageY);
+                word.hidden = true;
+                let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+                word.hidden = false;
+                
+                if (!elemBelow) return;
             };
             
             moveAt(event.pageX, event.pageY);

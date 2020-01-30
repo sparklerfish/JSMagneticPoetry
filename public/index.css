@@ -22,9 +22,9 @@ html {
 
 #words {
     /* height: 1200px; */
-    padding: 5px;
+    padding: 6px;
     width: 400px;
-    /* margin-left: 5px; */
+    margin-left: 5px;
     margin-top: 260px;
     /* position: fixed; */
 }
