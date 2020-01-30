@@ -74,6 +74,7 @@ form {
     border-radius: 5px;
     border: 0 none;
     height: 15px;
+    outline: none;
 }
 
 #custom-word {
@@ -83,6 +84,7 @@ form {
     border-radius: 5px;
     border: 0 none;
     height: 15px;
+    outline: none;
 }
 
 input[type=submit] {
@@ -93,6 +95,8 @@ input[type=submit] {
     border-radius: 5px; 
     width: 180px;
     margin: auto;
+    outline: none;
+
 }
 
 #controls {
