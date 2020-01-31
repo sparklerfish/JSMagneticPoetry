@@ -21,10 +21,11 @@
   },
   "homepage": "https://github.com/sparklerfish/JSMagneticPoetry#readme",
   "scripts": {
-    "build": "webpack --watch",
+    "build:watch": "webpack --watch",
     "start": "node app.js",
     "start:debug": "DEBUG=* node app.js",
-    "server:debug": "nodemon --inspect app.js"
+    "server:debug": "nodemon --inspect app.js",
+    "heroku-postbuild": "webpack -p" 
   },
   "dependencies": {
     "axios": "^0.18.0",
