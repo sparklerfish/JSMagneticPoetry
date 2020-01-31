@@ -770,12 +770,13 @@ window.onload = () => {
             e.preventDefault();
             // debugger;
             const searchWord = document.getElementById("search-word").value
+            document.getElementById("search-word").value = "";
             if (searchWord.length === 0) {
-                alert("Please enter a word!")
+               return;
             } else {
                 const wordsDiv = document.getElementById("words");
                 while (wordsDiv.firstChild) {
-                wordsDiv.removeChild(wordsDiv.firstChild);
+                    wordsDiv.removeChild(wordsDiv.firstChild);
                 }
                 let searchArr = [];
                 // console.log(searchWord)
@@ -914,6 +915,9 @@ const addWord = (word, idx) => {
     // wordSpan.style.color = `blue`;
     document.getElementById("words").appendChild(wordSpan);
 };
+
+
+
 
 /***/ }),
 /* 8 */
