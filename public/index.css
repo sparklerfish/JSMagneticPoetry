@@ -18,6 +18,8 @@ html {
     user-select: none;
     box-sizing: border-box;
     font-variant-ligatures: no-common-ligatures;
+    font-size: 12pt;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 #words {
@@ -93,7 +95,7 @@ form {
     outline: none;
 }
 
-input[type=submit] {
+#search-button {
     padding: 6px 15px; 
     background:#2BB7C9; 
     outline:#2BB7C9; 
@@ -108,33 +110,76 @@ input[type=submit] {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+#custom-button {
+    padding: 6px 15px; 
+    background:#2BB7C9; 
+    outline:#2BB7C9; 
+    border: 0 none;
+    cursor: pointer;
+    border-radius: 5px; 
+    width: 180px;
+    margin: auto;
+    /* outline: none; */
+    color: white;
+    font-size: 10pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#custom-button:hover {
+    background: #258e9c
+}
+
+#search-button:hover {
+    background: #258e9c
+}
+
 #controls {
     position: absolute;
     top: 20px;
     left: 25px;
     background-color: #FE4A48;
-    padding: 10px;
+    padding-left: 10px;
+    padding-bottom: 30px;
     border-radius: 5px;
-    width: 390px;
+    width: 648px;
     height: 215px;
     margin: auto;
+    /* display: inline-block; */
+    float: left;
 }
+
+#word-controls {
+    width: 390px;
+    /* border-right: 1px solid white; */
+    padding: 10px;
+    float: left;
+}
+
+
 #style-controls {
     position: absolute;
-    top: 20px;
-    left: 440px;
-    background-color: #FE4A48;
-    padding: 10px;
-    border-radius: 5px;
+    /* top: 20px; */
+    left: 425px;
     width: 390px;
-    height: 215px;
-    margin: auto;
+    border-left: 1px solid white;
+    padding: 10px;
+    padding-left: 20px;
+    float: left;
+    height: 225px;
 }
+
 
 h2 {
     margin-top: 5px;
     margin-left: 5px;
     font-size: 20pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: yellow;
+}
+h3 {
+    margin-top: 10px;
+    margin-left: 5px;
+    font-size: 16pt;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: yellow;
 }
@@ -154,3 +199,55 @@ p a {
 p a:hover {
     text-decoration: underline;
 }
+
+/* Dropdown Button */
+.dropbtn {
+    margin-top: 11px;
+    background-color: #2BB7C9;
+    width: 180px;
+    border-radius: 5px;
+    height: 27px;
+    color: white;
+    padding: 6px 15px; 
+    margin-left: 5px;
+    border: none;
+    font-size: 10pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-left: 5px;
+
+}
+
+/* Links inside the dropdown */
+.dropdown-content div {
+    color: black;
+    padding: 5px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 10pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content div:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #258e9c;}
