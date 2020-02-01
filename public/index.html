@@ -38,16 +38,18 @@
           <h3>Customize Style!</h3>
             <div class="dropdown">
               <button class="dropbtn">Font</button>
-              <div class="dropdown-content">
-                <div id="font1">Times New Roman</div>
-                <div id="font2">Helvetica</div>
-                <div id="font3">Comic Sans</div>
+              <div class="dropdown-content" id="font-drop">
+                <div id="times">Times New Roman</div>
+                <div id="helv">Helvetica</div>
+                <div id="comic">Optima</div>
+                <div id="comic">Comic Sans MS</div>
+                <div id="comic">Impact</div>
               </div>
             </div>
             <br>
             <div class="dropdown">
               <button class="dropbtn">Font Size</button>
-              <div class="dropdown-content">
+              <div class="dropdown-content" id="font-size-drop">
                 <div id="size1">10pt</div>
                 <div id="size2">12pt</div>
                 <div id="size3">14pt</div>
@@ -57,16 +59,32 @@
             <br>
             <div class="dropdown">
               <button class="dropbtn">Text Color</button>
-              <div class="dropdown-content">
-                <input type="color" value="#000000">
+              <!-- <div id="text-color-dropdown-content">
+                <input type="color" id="text-color-picker" value="#000000">
+              </div> -->
+                <div class="dropdown-content" id="text-color-drop">
+                  <center>
+                    <span class="color-square" id="text-red"></span>
+                    <span class="color-square" id="text-blue"></span>
+                    <span class="color-square" id="text-yellow"></span>
+                    <span class="color-square" id="text-black"></span>
+                  </center>
               </div>
             </div>
             <br>
             <div class="dropdown">
-              <button class="dropbtn">Magnet Color</button>
-              <div class="dropdown-content">
-                <input type="color" value="#FFFFFF">
-              </div>
+              <button class="dropbtn" id="magnet-color-button">Magnet Color</button>
+              <!-- <div id="magnet-color-dropdown-content">
+                <input type="color" id="magnet-color-picker" value="#FFFFFF">
+              </div> -->
+                <div class="dropdown-content" id="magnet-color-drop">
+                  <center>
+                    <span class="color-square" id="magnet-red"></span>
+                    <span class="color-square" id="magnet-blue"></span>
+                    <span class="color-square" id="magnet-yellow"></span>
+                    <span class="color-square" id="magnet-white"></span>
+                  </center>
+                </div>
             </div>
 
       </div>

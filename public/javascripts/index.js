@@ -1,4 +1,7 @@
+// import * as d3 from "d3";
+
 const axios = require('axios');
+const d3 = require('d3');
 
 const COMMON_WORDS = "it an and am the I and of me very I that in ed you but to ing way he or for the er they as with more be we if on most have she when at from the be to of and a in that have it for not who is on with he as you do".split(" ")
 
@@ -97,7 +100,7 @@ window.onload = () => {
             const degrees = -3 + Math.random() * 6;
             // const rect = wordRect.getBoundingClientRect();
             wordRect.style.position = "absolute";
-            wordRect.style.left = "35px";
+            wordRect.style.left = "50px";
             wordRect.style.top = "210px";
             wordRect.style.zIndex = 2;
             wordRect.style.transform = `rotate(${degrees}deg)`;
@@ -158,6 +161,34 @@ window.onload = () => {
             return false;
         };
     };
+
+    // const magnetColorPicker = document.getElementById("magnet-color-picker");
+    // const magnetColorButton = document.getElementById("magnet-color-button");
+    // magnetColorPicker.addEventListener("change", updateMagnetColor);
+    // magnetColorButton.addEventListener("mouseover", e => {
+    //   console.log("over magnet color!");
+    //   document.getElementById("magnet-color-dropdown-content").style.display =
+    //     "block";
+    // });
+    // magnetColorPicker.addEventListener("mousedown", () => {
+    //     console.log("hello")
+    // });
+    const words = document.getElementsByClassName("word");
+
+    const fontPicker = document.getElementById("font-drop");
+
+    const updateFont = e => {
+        console.log(e.target.innerHTML);
+        console.log(e.currentTarget);
+        console.log("what");
+        for (let i = 0; i < words.length; i++) {
+            words[i].style.fontFamily = e.target.innerHTML
+
+        }
+        // d3.selectAll("word").attr("font-size", 20);
+    };
+
+    fontPicker.addEventListener("click", updateFont);
 };
 
 const getWords = searchWord => {
@@ -182,5 +213,6 @@ const addWord = (word, idx) => {
     // wordSpan.style.color = `blue`;
     document.getElementById("words").appendChild(wordSpan);
 };
+
 
 
