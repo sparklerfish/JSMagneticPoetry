@@ -303,3 +303,41 @@ input[type="color"]::-webkit-color-swatch {
 .font-size {
     font-family: 'Times New Roman', Times, serif;
 }
+
+.links {
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    left: 25px;
+    background-color: #FE4A48;
+    /* padding-left: 10px;
+    padding-bottom: 30px; */
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+    /* margin: auto; */
+    /* display: inline-block; */
+    /* float: left; */
+    z-index: 0;
+}
+
+.links li {
+    list-style: none;
+    display: inline-block;
+    /* margin: 3px; */
+    margin-left: 3px;
+    font-size: 20pt;
+}
+
+.links ul {
+    padding-inline-start: 7px;
+    margin-top: 6px;
+}
+
+.links li a:hover {
+    color: yellow;
+}
+
+.links li a {
+    color: white;
+}
