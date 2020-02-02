@@ -1,12 +1,12 @@
-// import * as d3 from "d3";
-
+const d3 = require("d3-selection");
 const axios = require('axios');
-const d3 = require('d3');
 
 const COMMON_WORDS = "it an and am the I and of me very I that in ed you but to ing way he or for the er they as with more be we if on most have she when at from the be to of and a in that have it for not who is on with he as you do".split(" ")
 
 window.onload = () => {
-    
+    localStorage.clear();
+    d3.selectAll(".font-size").style("font-family", "Times New Roman");
+
     getWords("javascript").then(data => {
         let wordsArr = [];
         while (wordsArr.length <= 40) {
@@ -176,19 +176,54 @@ window.onload = () => {
     const words = document.getElementsByClassName("word");
 
     const fontPicker = document.getElementById("font-drop");
+    const fontSizePicker = document.getElementById("font-size-drop");
+    // const colorSquares = document.getElementsByClassName("color-square");
+    const magnetColorPicker = document.getElementById("magnet-color-drop");
+    const textColorPicker = document.getElementById("text-color-drop");
 
+    
+    const updateColor = (e) => {
+        // if (e.target.classname != "color-square") return;
+        // const square = e.target;
+        const element = e.target.id.split("_")[0];
+        const color = e.target.id.split("_")[1];
+        // debugger
+        d3.selectAll(".word").style(element, color)
+    }
+    
     const updateFont = e => {
-        console.log(e.target.innerHTML);
-        console.log(e.currentTarget);
-        console.log("what");
-        for (let i = 0; i < words.length; i++) {
-            words[i].style.fontFamily = e.target.innerHTML
+        // console.log(e.target.innerHTML);
+        // console.log(e.currentTarget);
+        // console.log("what");
+        // for (let i = 0; i < words.length; i++) {
+        //     words[i].style.fontFamily = e.target.innerHTML
+        // localStorage.setItem("fontSize", e.target.innerHTML);
+        // }
+        d3.selectAll(".word").style("font-family", e.target.innerHTML);
 
-        }
-        // d3.selectAll("word").attr("font-size", 20);
+        localStorage.setItem("fontFamily", e.target.innerHTML);
+        // debugger
+        d3.selectAll(".font-size").style("font-family", e.target.innerHTML);
+    };
+    
+    const updateFontSize = e => {
+        // console.log(e.target.innerHTML);
+        // console.log(e.currentTarget);
+        console.log("what");
+        // debugger
+        d3.selectAll(".word").style("font-size", e.target.innerHTML);
+        // for (let i = 0; i < words.length; i++) {
+        //     words[i].style.fontSize = e.target.innerHTML
+        // }
+        localStorage.setItem("fontSize", e.target.innerHTML);
+        // console.log('set storage')
+        // d3.selectAll("word").attr("font-size", e.target.innerHTML);
     };
 
     fontPicker.addEventListener("click", updateFont);
+    fontSizePicker.addEventListener("click", updateFontSize);
+    magnetColorPicker.addEventListener("click", updateColor);
+    textColorPicker.addEventListener("click", updateColor);
 };
 
 const getWords = searchWord => {
@@ -208,11 +243,14 @@ const addWord = (word, idx) => {
     wordSpan.className = "word"; 
     wordSpan.id = `word-${idx}`;
     wordSpan.style.zIndex = 0;
+    if (localStorage.getItem("fontSize")){
+        wordSpan.style.fontSize = localStorage.getItem("fontSize");
+    }
+    if (localStorage.getItem("fontFamily")){
+        wordSpan.style.fontFamily = localStorage.getItem("fontFamily");
+    }
     // wordSpan.style.position = "relative";
     // wordSpan.style.transform = `rotate(5deg)`;
     // wordSpan.style.color = `blue`;
     document.getElementById("words").appendChild(wordSpan);
 };
-
-
-
