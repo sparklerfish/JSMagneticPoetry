@@ -44,42 +44,48 @@ window.onload = () => {
             if (searchWord.length === 0) {
                return;
             } else {
-                const wordsDiv = document.getElementById("words");
-                while (wordsDiv.firstChild) {
-                    wordsDiv.removeChild(wordsDiv.firstChild);
-                }
                 let searchArr = [];
                 // console.log(searchWord)
-                getWords(searchWord).then(data => {
-                while (searchArr.length <= 40) {
-                    data.forEach(object => {
-                    searchArr.push(object.word);
+                getWords(searchWord)
+                .then(data => {
+                    // console.log(data)
+                    if (data.length === 0) {
+                        console.log("no words found");
+                        return;
+                    }
+                    const wordsDiv = document.getElementById("words");
+                    while (wordsDiv.firstChild) {
+                        wordsDiv.removeChild(wordsDiv.firstChild);
+                    }
+                    while (searchArr.length <= 40) {
+                        data.forEach(object => {
+                        searchArr.push(object.word);
+                        });
+                    }
+                    // console.log(searchArr.length)
+                    let allWords = searchArr.concat(COMMON_WORDS);
+                    allWords.push(searchWord);
+                    allWords.sort(() => Math.random() - 0.5);
+                    allWords = allWords.filter(
+                        (a, b) => allWords.indexOf(a) === b
+                    );
+                    // console.log(allWords);
+                    allWords.forEach((word, idx) => {
+                        addWord(word, idx);
                     });
-                }
-                // console.log(searchArr.length)
-                let allWords = searchArr.concat(COMMON_WORDS);
-                allWords.push(searchWord);
-                allWords.sort(() => Math.random() - 0.5);
-                allWords = allWords.filter(
-                    (a, b) => allWords.indexOf(a) === b
-                );
-                // console.log(allWords);
-                allWords.forEach((word, idx) => {
-                    addWord(word, idx);
-                });
-                for (let i = allWords.length - 1; i >= 0; i--) {
-                    const wordRect = document.getElementById(`word-${i}`);
-                    const rect = wordRect.getBoundingClientRect();
-                    // debugger;
-                    const degrees = -3 + Math.random() * 6;
+                    for (let i = allWords.length - 1; i >= 0; i--) {
+                        const wordRect = document.getElementById(`word-${i}`);
+                        const rect = wordRect.getBoundingClientRect();
+                        // debugger;
+                        const degrees = -3 + Math.random() * 6;
 
-                    // console.log(rect.top, rect.right, rect.bottom, rect.left);
-                    wordRect.style.position = "absolute";
-                    wordRect.style.left = rect.left + "px";
-                    wordRect.style.top = rect.top + "px";
-                    wordRect.style.transform = `rotate(${degrees}deg)`;
-                }
-                });
+                        // console.log(rect.top, rect.right, rect.bottom, rect.left);
+                        wordRect.style.position = "absolute";
+                        wordRect.style.left = rect.left + "px";
+                        wordRect.style.top = rect.top + "px";
+                        wordRect.style.transform = `rotate(${degrees}deg)`;
+                    }
+                })
             }
       },
       false
@@ -189,6 +195,8 @@ window.onload = () => {
         const color = e.target.id.split("_")[1];
         // debugger
         d3.selectAll(".word").style(element, color)
+        localStorage.setItem(element, color);
+
     }
     
     const updateFont = e => {
@@ -232,9 +240,9 @@ const getWords = searchWord => {
       .then(response => {
         return response.data
     })
-      .catch(function(error) {
-        console.log(error);
-    });
+    //   .catch(function(error) {
+    //     console.log(error);
+    // });
 }
 
 const addWord = (word, idx) => {
@@ -248,6 +256,12 @@ const addWord = (word, idx) => {
     }
     if (localStorage.getItem("fontFamily")){
         wordSpan.style.fontFamily = localStorage.getItem("fontFamily");
+    }
+    if (localStorage.getItem("color")){
+        wordSpan.style.color = localStorage.getItem("color");
+    }
+    if (localStorage.getItem("background-color")){
+        wordSpan.style.backgroundColor = localStorage.getItem("background-color");
     }
     // wordSpan.style.position = "relative";
     // wordSpan.style.transform = `rotate(5deg)`;
