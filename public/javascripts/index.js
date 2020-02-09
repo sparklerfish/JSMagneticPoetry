@@ -50,7 +50,7 @@ window.onload = () => {
             .then(data => {
                 // console.log(data)
                 if (data.length === 0) {
-                    console.log("no words found");
+                    // console.log("no words found");
                     return;
                 }
                 const wordsDiv = document.getElementById("words");
@@ -168,17 +168,6 @@ window.onload = () => {
         };
     };
 
-    // const magnetColorPicker = document.getElementById("magnet-color-picker");
-    // const magnetColorButton = document.getElementById("magnet-color-button");
-    // magnetColorPicker.addEventListener("change", updateMagnetColor);
-    // magnetColorButton.addEventListener("mouseover", e => {
-    //   console.log("over magnet color!");
-    //   document.getElementById("magnet-color-dropdown-content").style.display =
-    //     "block";
-    // });
-    // magnetColorPicker.addEventListener("mousedown", () => {
-    //     console.log("hello")
-    // });
     const words = document.getElementsByClassName("word");
 
     const fontPicker = document.getElementById("font-drop");
