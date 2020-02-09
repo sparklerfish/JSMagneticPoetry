@@ -23,7 +23,27 @@ JSMagneticPoetry is a web implementation of Magnetic Poetry fridge magnets. It i
 JSMagneticPoetry has a Node.js backend to make Axios requests to fetch words from the [Datamuse API](https://www.datamuse.com/api/).
 
 #### Frontend
-JSMagneticPoetry is implemented with JavaScript, HTML5, and CSS3. D3.js is integrated for grouping, selecting, and modifying HTML elements for style customization. 
+JSMagneticPoetry is implemented with JavaScript, HTML5, and CSS3. D3.js is integrated for grouping, selecting, and modifying HTML elements for style customization. User preferences are remembered in localStorage so newly created words and word lists retain consistent customization.
+
+```javascript
+  const updateColor = e => {
+      const element = e.target.id.split("_")[0];
+      const color = e.target.id.split("_")[1];
+      d3.selectAll(".word").style(element, color)
+      localStorage.setItem(element, color);
+  };
+  
+  const updateFont = e => {
+      d3.selectAll(".word").style("font-family", e.target.innerHTML);
+      localStorage.setItem("fontFamily", e.target.innerHTML);
+      d3.selectAll(".font-size").style("font-family", e.target.innerHTML);
+  };
+  
+  const updateFontSize = e => {
+      d3.selectAll(".word").style("font-size", e.target.innerHTML);
+      localStorage.setItem("fontSize", e.target.innerHTML);
+  };
+```
 
 ---
 

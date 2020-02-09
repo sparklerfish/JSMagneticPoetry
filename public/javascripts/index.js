@@ -177,44 +177,22 @@ window.onload = () => {
     const textColorPicker = document.getElementById("text-color-drop");
 
     
-    const updateColor = (e) => {
-        // if (e.target.classname != "color-square") return;
-        // const square = e.target;
+    const updateColor = e => {
         const element = e.target.id.split("_")[0];
         const color = e.target.id.split("_")[1];
-        // debugger
         d3.selectAll(".word").style(element, color)
         localStorage.setItem(element, color);
-
-    }
+    };
     
     const updateFont = e => {
-        // console.log(e.target.innerHTML);
-        // console.log(e.currentTarget);
-        // console.log("what");
-        // for (let i = 0; i < words.length; i++) {
-        //     words[i].style.fontFamily = e.target.innerHTML
-        // localStorage.setItem("fontSize", e.target.innerHTML);
-        // }
         d3.selectAll(".word").style("font-family", e.target.innerHTML);
-
         localStorage.setItem("fontFamily", e.target.innerHTML);
-        // debugger
         d3.selectAll(".font-size").style("font-family", e.target.innerHTML);
     };
     
     const updateFontSize = e => {
-        // console.log(e.target.innerHTML);
-        // console.log(e.currentTarget);
-        console.log("what");
-        // debugger
         d3.selectAll(".word").style("font-size", e.target.innerHTML);
-        // for (let i = 0; i < words.length; i++) {
-        //     words[i].style.fontSize = e.target.innerHTML
-        // }
         localStorage.setItem("fontSize", e.target.innerHTML);
-        // console.log('set storage')
-        // d3.selectAll("word").attr("font-size", e.target.innerHTML);
     };
 
     fontPicker.addEventListener("click", updateFont);
