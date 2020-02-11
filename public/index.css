@@ -28,17 +28,11 @@ html {
     width: 600px;
     margin-left: 5px;
     margin-top: 260px;
-    /* position: fixed; */
 }
 
 #rightBox {
     float: left;
-    /* height: 700px; */
     width: 600px;
-    /* border: 1px solid black; */
-    /* background-image: url('fridge.png');
-    object-fit: cover; */
-    /* background-color: #EEEEEE; */
     border-radius: 6px;
     padding: 10px;
     margin: 10px;
@@ -46,10 +40,8 @@ html {
 }
 
 #main {
-    /* padding: 20px; */
     display: table;
     clear: both;
-    /* top: 0px; */
     margin-left: 1vw;
     margin-right: 1vw;
     margin-top: 1vh;
@@ -57,17 +49,12 @@ html {
     width: 98vw;
     height: 98vh;
     border-radius: 5px;
-    /* position: absolute; */
     z-index: -1;
-    /* box-sizing: border-box; */
     background-color: #fffee8;
 }
 
 #search-form {
-    /* padding-bottom: 20px;
-    padding-top: 20px; */
     margin: auto;
-    /* padding: 2px; */
 }
 
 
@@ -305,26 +292,19 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 .links {
-    /* display: none; */
     position: absolute;
     bottom: 20px;
     left: 25px;
     background-color: #FE4A48;
-    /* padding-left: 10px;
-    padding-bottom: 30px; */
     border-radius: 5px;
     width: 100px;
     height: 40px;
-    /* margin: auto; */
-    /* display: inline-block; */
-    /* float: left; */
     z-index: 0;
 }
 
 .links li {
     list-style: none;
     display: inline-block;
-    /* margin: 3px; */
     margin-left: 3px;
     font-size: 20pt;
 }
@@ -340,4 +320,23 @@ input[type="color"]::-webkit-color-swatch {
 
 .links li a {
     color: white;
+}
+
+#alert {
+    box-shadow: 1px 2px 2px 1px rgba(0,0,0,0.4);
+    position: absolute;
+    z-index: 9999;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    text-align: center;
+    background-color: white;
+    color: #FE4A48;
+
+    border-radius: 5px;
+    display: none;
+    top: 20%;
+    left: 20%;
+    font-size: 10pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

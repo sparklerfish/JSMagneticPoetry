@@ -24,7 +24,6 @@ window.onload = () => {
         for (let i = allWords.length - 1; i >= 0; i--) {
             const wordRect = document.getElementById(`word-${i}`)
             const rect = wordRect.getBoundingClientRect();
-            // debugger;
             const degrees = -3 + Math.random() * 6;
 
             wordRect.style.position = "absolute";
@@ -38,19 +37,17 @@ window.onload = () => {
     
     searchForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        // debugger;
         const searchWord = document.getElementById("search-word").value
         document.getElementById("search-word").value = "";
         if (searchWord.length === 0) {
+            displayError("Please enter a word")
             return;
         } else {
             let searchArr = [];
-            // console.log(searchWord)
             getWords(searchWord)
             .then(data => {
-                // console.log(data)
                 if (data.length === 0) {
-                    // console.log("no words found");
+                    displayError("No words found!")
                     return;
                 }
                 const wordsDiv = document.getElementById("words");
@@ -62,24 +59,20 @@ window.onload = () => {
                     searchArr.push(object.word);
                     });
                 }
-                // console.log(searchArr.length)
                 let allWords = searchArr.concat(COMMON_WORDS);
                 allWords.push(searchWord);
                 allWords.sort(() => Math.random() - 0.5);
                 allWords = allWords.filter(
                     (a, b) => allWords.indexOf(a) === b
                 );
-                // console.log(allWords);
                 allWords.forEach((word, idx) => {
                     addWord(word, idx);
                 });
                 for (let i = allWords.length - 1; i >= 0; i--) {
                     const wordRect = document.getElementById(`word-${i}`);
                     const rect = wordRect.getBoundingClientRect();
-                    // debugger;
                     const degrees = -3 + Math.random() * 6;
 
-                    // console.log(rect.top, rect.right, rect.bottom, rect.left);
                     wordRect.style.position = "absolute";
                     wordRect.style.left = rect.left + "px";
                     wordRect.style.top = rect.top + "px";
@@ -96,7 +89,10 @@ window.onload = () => {
     customForm.addEventListener("submit", (e) => {
             e.preventDefault();
             const customWord = document.getElementById("custom-word").value;
-            if (customWord.length === 0) return;
+            if (customWord.length === 0) {
+                displayError("  Please enter a word");
+                return
+            };
             const wordsDiv = document.getElementById("words");
             const lastSpanId = wordsDiv.lastElementChild.id;
             const newWordIdx = parseInt(lastSpanId.split("-")[1]) + 2
@@ -104,7 +100,6 @@ window.onload = () => {
             document.getElementById("custom-word").value = "";
             const wordRect = document.getElementById(`word-${newWordIdx}`);
             const degrees = -3 + Math.random() * 6;
-            // const rect = wordRect.getBoundingClientRect();
             wordRect.style.position = "absolute";
             wordRect.style.left = "50px";
             wordRect.style.top = "210px";
@@ -126,15 +121,10 @@ window.onload = () => {
 
         word.onmousedown = event => {
             zCounter += 1;
-            // let shiftX = event.clientX - word.getBoundingClientRect().left;
-            // let shiftY = event.clientY - word.getBoundingClientRect().top;
             word.style.position = "absolute";
             word.style.zIndex = zCounter;
             word.style.cursor = "grabbing";
             word.style.filter = "drop-shadow(3px 3px 3px grey)";
-
-            // document.body.append(word);
-
             
             const moveAt = (pageX, pageY) => {
                 word.style.left = pageX - (word.offsetWidth / 2) + "px";
@@ -172,7 +162,6 @@ window.onload = () => {
 
     const fontPicker = document.getElementById("font-drop");
     const fontSizePicker = document.getElementById("font-size-drop");
-    // const colorSquares = document.getElementsByClassName("color-square");
     const magnetColorPicker = document.getElementById("magnet-color-drop");
     const textColorPicker = document.getElementById("text-color-drop");
 
@@ -207,9 +196,6 @@ const getWords = searchWord => {
       .then(response => {
         return response.data
     })
-    //   .catch(function(error) {
-    //     console.log(error);
-    // });
 }
 
 const addWord = (word, idx) => {
@@ -230,8 +216,16 @@ const addWord = (word, idx) => {
     if (localStorage.getItem("background-color")){
         wordSpan.style.backgroundColor = localStorage.getItem("background-color");
     }
-    // wordSpan.style.position = "relative";
-    // wordSpan.style.transform = `rotate(5deg)`;
-    // wordSpan.style.color = `blue`;
     document.getElementById("words").appendChild(wordSpan);
 };
+
+const displayError = error => {
+    const alertBox = document.getElementById("alert");
+    const alertText= document.getElementById("alert-text");
+    alertBox.style.display = "block";
+    alertText.innerHTML = error;
+    const closeButton = document.getElementById("alert-close");
+    closeButton.addEventListener("click", e => {
+        alertBox.style.display = "none";
+    })
+}
