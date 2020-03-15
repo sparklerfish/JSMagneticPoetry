@@ -190,6 +190,12 @@ window.onload = () => {
     textColorPicker.addEventListener("click", updateColor);
 };
 
+/**
+ * Returns an asynchronous request to the DataMuse API which returns
+ * the data from the related words query response.
+ * 
+ * @param {String} searchWord The word to be queried in the DataMuse API.
+ */
 const getWords = searchWord => {
     return axios
       .get(`/words?rel_trg=${searchWord}`)
