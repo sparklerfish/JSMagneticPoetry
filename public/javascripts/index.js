@@ -204,6 +204,14 @@ const getWords = searchWord => {
     })
 }
 
+/**
+ * Creates a new span element with the text of "word" and the id of idx.
+ * Checks for customization preferences in localStorage and applies it to the
+ * word element.  Appends the word to the "words" parent element.
+ * 
+ * @param {String} word The word to add
+ * @param {Number} idx The index of the word in the list
+ */
 const addWord = (word, idx) => {
     const wordSpan = document.createElement("span");
     wordSpan.innerHTML = word;
