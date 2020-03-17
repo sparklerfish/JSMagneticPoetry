@@ -232,7 +232,11 @@ const addWord = (word, idx) => {
     }
     document.getElementById("words").appendChild(wordSpan);
 };
-
+/**
+ * Toggles the visibility of the error alert box and displays the error entered into the parameters
+ * 
+ * @param {String} error The error text to be displayed in the alert box
+ */
 const displayError = error => {
     const alertBox = document.getElementById("alert");
     const alertText= document.getElementById("alert-text");
