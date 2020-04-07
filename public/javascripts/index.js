@@ -44,21 +44,25 @@ window.onload = () => {
             return;
         } else {
             let searchArr = [];
+
             getWords(searchWord)
             .then(data => {
                 if (data.length === 0) {
                     displayError("No words found!")
                     return;
                 }
+
                 const wordsDiv = document.getElementById("words");
                 while (wordsDiv.firstChild) {
                     wordsDiv.removeChild(wordsDiv.firstChild);
                 }
+
                 while (searchArr.length <= 40) {
                     data.forEach(object => {
-                    searchArr.push(object.word);
+                        searchArr.push(object.word);
                     });
                 }
+
                 let allWords = searchArr.concat(COMMON_WORDS);
                 allWords.push(searchWord);
                 allWords.sort(() => Math.random() - 0.5);
@@ -68,6 +72,7 @@ window.onload = () => {
                 allWords.forEach((word, idx) => {
                     addWord(word, idx);
                 });
+
                 for (let i = allWords.length - 1; i >= 0; i--) {
                     const wordRect = document.getElementById(`word-${i}`);
                     const rect = wordRect.getBoundingClientRect();
@@ -80,9 +85,7 @@ window.onload = () => {
                 }
             })
         }
-      },
-      false
-    );
+    }, false);
 
     const customForm = document.getElementById("custom-form");
     
