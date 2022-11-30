@@ -35,7 +35,7 @@
     "d3-selection": "^1.4.1",
     "express": "^4.17.1",
     "mem": ">=6.0.1",
-    "node-fetch": "^3.1.1",
+    "node-fetch": "^3.2.10",
     "node-sass": "^7.0.0",
     "sass-loader": "^8.0.2",
     "webpack": "^4.42.1",
