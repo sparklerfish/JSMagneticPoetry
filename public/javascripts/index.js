@@ -1,5 +1,7 @@
-const d3 = require("d3-selection");
-const axios = require('axios');
+// const d3 = require("d3-selection");
+// const axios = require('axios');
+import d3 from 'd3-selection';
+import axios from 'axios';
 
 const COMMON_WORDS = "it an and am the I and of me very I that in ed you but to ing way he or for the er they as with more be we if on most have she when at from the be to of and a in that have it for not who is on with he as you do".split(" ")
 
