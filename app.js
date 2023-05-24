@@ -1,7 +1,12 @@
-const express = require('express')
-const app = express()
-const path = require('path')
-const fetch = require('node-fetch')
+import express from 'express';
+import path from 'path';
+import fetch from 'node-fetch';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const app = express();
 const PORT = process.env.PORT || 8000; // process.env accesses heroku's environment variables
 
 app.use(express.static('public'))
@@ -21,7 +26,6 @@ app.get('/words', (request, response) => {
     })
     .then(body => {
       let results = JSON.parse(body);
-      console.log(results);
       response.send(results);
     });
 });
