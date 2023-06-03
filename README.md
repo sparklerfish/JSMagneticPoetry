@@ -14,7 +14,7 @@
 ## Introduction
 JSMagneticPoetry is a web implementation of Magnetic Poetry fridge magnets. It is fully customizable. Users can create custom word lists inspired by an input word, sourced via [Datamuse API](https://www.datamuse.com/api/).
 
-[Live link to JSMagneticPoetry!](https://js-magnetic-poetry.herokuapp.com)
+[Live link to JSMagneticPoetry!](https://js-magnetic-poetry.onrender.com)
 
 ---
 
