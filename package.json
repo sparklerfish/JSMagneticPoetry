@@ -33,7 +33,7 @@
     "babel-loader": "^8.1.0",
     "babel-preset-es2015": "^6.24.1",
     "d3-selection": "^1.4.1",
-    "express": "^4.19.2",
+    "express": "^4.21.0",
     "mem": ">=6.0.1",
     "node-fetch": "^3.2.10",
     "node-sass": "^9.0.0",
